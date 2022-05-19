@@ -1,0 +1,19 @@
+<div class="d-flex flex-column flex-shrink-0 py-3 px-3 bg-dark text-white vh-100">
+  <div class="d-flex align-items-center justify-content-center py-2">
+    <%= link_to "Menu", root_path, class: "text-white display-6 text-decoration-none" %>
+  </div>
+  <hr />
+
+  <div class="top_contents">
+    <div class="row">
+      <% if user_signed_in? %>
+        <%= button_to "つぶやく", new_tweet_path, class: "btn btn-outline-primary", method: :get %>
+        <%= button_to "マイページ", "/users/#{current_user.id}", class: "btn btn-outline-success", method: :get  %>
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-warning" %>
+      <% else %>
+        <%= button_to "ログイン", new_user_session_path, class: "btn btn-outline-primary", method: :get %>
+        <%= button_to "新規登録", new_user_registration_path, class: "btn btn-outline-info", method: :get %>
+      <% end %>
+    </div>
+  </div>
+</div>

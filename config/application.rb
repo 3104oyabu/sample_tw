@@ -33,5 +33,9 @@ module SampleTw
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    # タイムゾーンをTokyo（日本）にする
+    config.time_zone = "Tokyo"
+    # デフォルトのロケールを日本にする
+    config.i18n.default_locale = :ja
   end
 end

@@ -1,0 +1,16 @@
+<h1><%= @nickname %>さんのつぶやき一覧</h1>
+
+<div class="card shadow mt-3">
+  <div class="container-fluid">
+    <div class="row py-2">
+      <%= turbo_frame_tag "tweets-page-#{@tweets.current_page}" do %>
+        <% @tweets.each do |tweet| %>
+          <%= link_to tweet, class: "text-decoration-none text-dark card mt-0", data: { turbo_frame: "modal" } do %>
+            <%= render partial: "tweets/tweet", locals: {tweet: tweet} %>
+          <% end %>
+        <% end %>
+        <%= turbo_frame_tag "tweets-page-#{@tweets.next_page}", src: path_to_next_page(@tweets), loading: :lazy %>
+      <% end %>
+    </div>
+  </div>
+</div>
